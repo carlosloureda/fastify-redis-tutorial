@@ -6,30 +6,8 @@ const fastify = require("fastify")({ logger: true })
 //     return { hello: 'world' }
 // })
 
+fastify.register(require('./routes/index'))
 
-fastify.route({
-    method: 'GET',
-    url: '/',
-    schema: {
-        querystring: {
-            name: { type: 'string' }
-        },
-        response: {
-            200: {
-                type: 'object',
-                properties: {
-                    hello: { type: 'string' }
-                }
-            }
-        }
-    },
-    preHandler: async (request, reply) => {
-        // checks authentication
-    },
-    handler: async (request, reply) => {
-        return { hello: 'world' }
-    },
-})
 
 const start = async () => {
 
